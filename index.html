@@ -1,1 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TRC20 vs ERC20 怎么选？USDT 网络选择与避坑清单（SEO06）</title>
+  <meta name="description" content="一页搞懂 TRC20 与 ERC20 的区别、手续费/速度对比、转账常见错误与排查方法。适合 USDT 新手快速自检。" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="./" />
+
+  <style>
+    :root{
+      --bg:#0b1220; --card:rgba(255,255,255,.06); --line:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
+      --accent:#22c55e; --accent2:#60a5fa; --shadow:0 20px 60px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 10% 10%, rgba(96,165,250,.25), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(34,197,94,.18), transparent 60%),
+        linear-gradient(180deg, #070b14 0%, #0b1220 60%, #070b14 100%);
+      line-height:1.75;
+    }
+    .wrap{max-width:1080px;margin:0 auto;padding:40px 18px 80px}
+    .hero{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius:22px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border-radius:999px;
+      background:rgba(96,165,250,.12);
+      border:1px solid rgba(96,165,250,.25);
+      font-size:13px;
+    }
+    .title{margin:14px 0 6px;font-size:34px}
+    .sub{margin:0;color:var(--muted);max-width:860px}
+    .ctaRow{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:14px;text-decoration:none;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      transition:.18s ease;
+      font-weight:700;color:inherit;
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.09)}
+    .btn.primary{border-color:rgba(34,197,94,.35);background:linear-gradient(180deg, rgba(34,197,94,.22), rgba(34,197,94,.10))}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:16px}
+    @media (max-width:920px){.grid{grid-template-columns:1fr}}
+    .card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:18px}
+    .h2{margin:0 0 10px;font-size:18px}
+    .muted{color:var(--muted);font-size:14px}
+    .list{margin:10px 0 0;padding-left:18px}
+    .table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.12);margin-top:12px}
+    .table th,.table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.10);font-size:14px}
+    .table th{background:rgba(255,255,255,.06);text-align:left}
+    .note{margin-top:14px;padding:12px 14px;border-radius:14px;border:1px dashed rgba(34,197,94,.35);background:rgba(34,197,94,.10);font-size:14px}
+    .faq details{border:1px solid var(--line);border-radius:16px;padding:12px 14px;background:rgba(255,255,255,.05);margin:10px 0}
+    .faq summary{cursor:pointer;font-weight:800}
+    .faq p{margin:10px 0 0;color:rgba(255,255,255,.85)}
+    .foot{margin-top:18px;color:rgba(255,255,255,.55);font-size:12px;text-align:center}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"TRC20 vs ERC20 怎么选？USDT 网络选择与避坑清单（SEO06）","description":"一页搞懂 TRC20 与 ERC20 的区别、手续费/速度对比、转账常见错误与排查方法。适合 USDT 新手快速自检。","inLanguage":"zh-CN"}
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="badge">🧭 SEO06 · USDT 网络选择指南（公开资料页）</div>
+      <h1 class="title">TRC20 vs ERC20：怎么选才不会转错？</h1>
+      <p class="sub">这页只做一件事：帮你快速搞懂 USDT 在不同网络下的差异，并用“自检清单”避免最常见的转账失误。</p>
+
+      <div class="ctaRow">
+        <a class="btn primary" href="https://usdtonlinecasino.com/" target="_blank" rel="nofollow noopener">打开主站获取完整内容</a>
+        <a class="btn" href="#compare">对比表</a>
+        <a class="btn" href="#check">自检清单</a>
+        <a class="btn" href="#faq">FAQ</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card" id="compare">
+        <h2 class="h2">✅ TRC20 与 ERC20 对比表</h2>
+        <p class="muted">记住一个核心：收款方支持哪个网络，你就必须用哪个网络。</p>
+
+        <table class="table">
+          <thead><tr><th>维度</th><th>TRC20（Tron）</th><th>ERC20（Ethereum）</th></tr></thead>
+          <tbody>
+            <tr><td>常见费用</td><td>通常更低</td><td>高峰期可能更高</td></tr>
+            <tr><td>确认速度</td><td>通常更快</td><td>受 Gas 影响更明显</td></tr>
+            <tr><td>使用建议</td><td>多数日常转账更友好</td><td>收款方只支持 ERC20 时使用</td></tr>
+          </tbody>
+        </table>
+
+        <div class="note">✅ 最重要的规则：<strong>地址格式像一样 ≠ 网络一样</strong>。很多地址长得像，但网络不同仍会不到账。</div>
+      </div>
+
+      <div class="card" id="check">
+        <h2 class="h2">🧾 转账前自检清单（强烈建议照做）</h2>
+        <ul class="list">
+          <li>确认收款方明确写的是 TRC20 还是 ERC20</li>
+          <li>转账网络必须与收款方网络一致</li>
+          <li>小额试转（尤其第一次转给新地址）</li>
+          <li>保存 TXID，必要时可独立验证</li>
+          <li>确认平台/交易所是否有额外提示（Memo/Tag 等）</li>
+        </ul>
+        <div class="note">⚠️ 如果对方要求“再转一笔才能解锁到账/提现”，务必谨慎。</div>
+      </div>
+    </div>
+
+    <div class="card faq" id="faq" style="margin-top:16px">
+      <h2 class="h2">FAQ</h2>
+      <details><summary>Q：我选错网络了，钱会丢吗？</summary><p>A：不一定丢，但处理难度会大幅上升，取决于收款方是否能协助找回。最稳的方法是“先小额试转”。</p></details>
+      <details><summary>Q：如何判断交易是否链上成功？</summary><p>A：索要 TXID。只要 TXID 存在，你就能在区块链浏览器查询确认状态。</p></details>
+      <details><summary>Q：为什么我看到 302/跳转？</summary><p>A：常见是 https 规范化、尾斜杠统一、或缓存/安全策略触发。只要最终落地是 200 且 canonical 统一，通常没问题。</p></details>
+    </div>
+
+    <div class="foot">SEO06 · 公开资料页（GitHub Pages）｜用于知识分享与快速自检</div>
+  </div>
+</body>
+</html>
 
